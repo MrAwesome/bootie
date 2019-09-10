@@ -19,7 +19,7 @@
         password: "{{ password | password_hash('sha512')}}"
 
     - name: get user ssh key
-      command: "cat {{homedir}}/.ssh/id_rsa.pub"
+      shell: "cat {{homedir}}/.ssh/id_rsa.pub | sed 's/ [^ ]*$//'"
       register: pubkey_result
 
     - name: get current hostname
@@ -29,11 +29,18 @@
     - name: check for existing key in GitHub
       uri:
         url: https://api.github.com/user/keys
-        method: POST
+        method: GET
         user: "{{github_username}}"
         password: "{{github_oauth_token}}"
         force_basic_auth: true
       register: existing_keys
+
+    - name: fjlskajfd
+      debug:
+        msg:
+          - "Found matching key in GitHub, will not attempt to re-add it: "
+          # yamllint disable-line rule:line-length
+          - "{{existing_keys.json | selectattr('key', 'equalto', pubkey_result.stdout) | map(attribute='key') | list}}"
 
     - name:
       uri:
@@ -48,4 +55,4 @@
           key: "{{pubkey_result.stdout}}"
         body_format: json
       # yamllint disable-line rule:line-length
-      when: "{{ existing_keys | from_json | selectattr('key', 'equalto', pubkey_result.stdout) | map(attribute=key) | list | length == 0}}"
+      when: ( existing_keys.json | selectattr('key', 'equalto', pubkey_result.stdout) | map(attribute='key') | list | length == 0 )
