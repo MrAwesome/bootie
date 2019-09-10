@@ -20,7 +20,7 @@
 
     - name: get user ssh key
       # yamllint disable-line rule:line-length
-      shell: "cat {{homedir}}/.ssh/id_rsa.pub | sed 's/^\\(ssh-rsa .*\\) .*/\\1/'"
+      shell: "cat {{homedir}}/.ssh/id_rsa.pub | sed 's/^\\(ssh-rsa [^ ]*\\) .*$/\\1/'"
       register: pubkey_result
 
     - name: get current hostname
