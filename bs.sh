@@ -1,8 +1,8 @@
 #!/bin/bash
 
-REPO=""
-
 set -euo pipefail
+
+REPO="https://github.com/MrAwesome/bootie.git"
 
 if [[ "$(whoami)" != "root" ]]; then
     echo 'This script must be run by root.' >&2
