@@ -11,7 +11,9 @@ source 01_set_vars.sh
 
 [[ -f ./05_distro_${DISTRO}.sh ]] && ./05_distro_${DISTRO}.sh
 
-./07_clone_ansible_config
+cd ..
+
+ansible-playbook ansible/initial_setup.yml -extra-vars "user=${SYSTEM_USER}"
 
 # TODO: put all this in a repo
 # TODO: clone repo to some dir

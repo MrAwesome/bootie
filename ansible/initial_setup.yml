@@ -1,5 +1,6 @@
 ---
-# This expects to be run with `ansible-playbook initial_setup.yml -u username`
+# This expects to be run with:
+# `ansible-playbook initial_setup.yml --extra-vars "user=username"`
 - name: Initial setup steps which set passwords etc
   hosts: localhost
   vars_files:
