@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-command -v ansible || install_cmd ansible
+command -v ansible &> /dev/null || install_cmd ansible
 
 ### For Ansible in push mode:
 # CONFIG="/etc/ssh/sshd_config"
