@@ -38,9 +38,11 @@
     - name: fjlskajfd
       debug:
         msg:
-          - "Found matching key in GitHub, will not attempt to re-add it: "
+          - "Key from system: "
+          - "{{pubkey_result.stdout}}"
+          - "Keys from github: "
           # yamllint disable-line rule:line-length
-          - "{{existing_keys.json | selectattr('key', 'equalto', pubkey_result.stdout) | map(attribute='key') | list}}"
+          - "{{existing_keys.json | map(attribute='key') | list}}"
 
     - name:
       uri:
