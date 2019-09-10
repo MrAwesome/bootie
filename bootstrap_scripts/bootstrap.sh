@@ -13,7 +13,10 @@ source 01_set_vars.sh
 
 cd ..
 
-ansible-playbook ansible/initial_setup.yml --extra-vars="user=${SYSTEM_USER}"
+# TODO: set up the file for this, or pass the password etc on the command line
+ansible-playbook "ansible/initial_setup.yml" --extra-vars="user=${SYSTEM_USER}"
+
+ansible-playbook "ansible/local.yml"
 
 # TODO: put all this in a repo
 # TODO: clone repo to some dir

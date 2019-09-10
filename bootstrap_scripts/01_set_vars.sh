@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# TODO: Allow these to be set in a file in the same dir as bs.sh,
+#       source it, and then only set the ones here which aren't
+#       set there. Also, allow them to be passed as command line args to bs.sh
+
 OLD_IFS="$IFS"
 IFS=$' \t\n\r' 
 echo -n "System username: "; read -r SYSTEM_USER

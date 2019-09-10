@@ -26,3 +26,5 @@
 # set up mutt for gmail or something? or just start using runbox?
 # https://github.com/xero/dotfiles
 # https://github.com/MrAwesome/dotfiles
+#
+# FINAL: Make ansible bootstrap itself into cron
