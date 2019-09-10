@@ -23,7 +23,7 @@
       register: pubkey_result
 
     - name: get current hostname
-      command: "hostname"
+      command: "hostname --fqdn"
       register: hostname_result
 
     - name:
