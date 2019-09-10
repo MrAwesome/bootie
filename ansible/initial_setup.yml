@@ -19,7 +19,8 @@
         password: "{{ password | password_hash('sha512')}}"
 
     - name: get user ssh key
-      shell: "cat {{homedir}}/.ssh/id_rsa.pub | sed 's/ [^ ]*$//'"
+      # yamllint disable-line rule:line-length
+      shell: "cat {{homedir}}/.ssh/id_rsa.pub | sed 's/^\\(ssh-rsa .*\\) .*/\\1/'"
       register: pubkey_result
 
     - name: get current hostname
