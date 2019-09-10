@@ -26,6 +26,15 @@
       command: "hostname --fqdn"
       register: hostname_result
 
+    - name: check for existing key in GitHub
+      uri:
+        url: https://api.github.com/user/keys
+        method: POST
+        user: "{{github_username}}"
+        password: "{{github_oauth_token}}"
+        force_basic_auth: true
+      register: existing_keys
+
     - name:
       uri:
         url: https://api.github.com/user/keys
@@ -38,3 +47,5 @@
           title: "Key from Ansible for: {{hostname_result.stdout}}"
           key: "{{pubkey_result.stdout}}"
         body_format: json
+      # yamllint disable-line rule:line-length
+      when: "{{ existing_keys | from_json | selectattr('key', 'equalto', pubkey_result.stdout) | map(attribute=key) | list | length == 0}}"
