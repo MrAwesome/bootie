@@ -6,12 +6,12 @@ echo -n "System username: "; read -r SYSTEM_USER
 echo -n "System password (silent): "; read -s -r SYSTEM_PASSWORD
 echo
 echo -n "Username for GitHub: "; read -r GITHUB_USERNAME
-echo -n "GitHub OAuth token with ssh key access (empty to try lastpass):"; read -r MAYBE_TOKEN
+echo -n "GitHub OAuth token with ssh key access (empty to try lastpass): "; read -r MAYBE_TOKEN
 IFS="$OLD_IFS"
 
 if [[ "$MAYBE_TOKEN" == "" ]]; then
     logstat "Attempting lastpass."
-    echo "Enter email address for LastPass: "; read -r EMAIL
+    echo -n "Enter email address for LastPass: "; read -r EMAIL
     install_cmd lastpass-cli
 
     lpass login "$EMAIL" 
