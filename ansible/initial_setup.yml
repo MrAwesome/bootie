@@ -1,6 +1,9 @@
 ---
+
 # This expects to be run with:
-# `ansible-playbook initial_setup.yml --extra-vars "user=username"`
+#   ansible-playbook initial_setup.yml --extra-vars \
+#   "user=blah,password=blah,github_username=blah,github_oauth=blah"
+
 - name: Initial setup steps which set passwords etc
   hosts: localhost
   vars_files:
@@ -13,3 +16,24 @@
         name: "{{user}}"
         generate_ssh_key: true
         shell: /bin/zsh
+        password: "{{ password | password_hash('sha512')}}"
+
+    - name: get user ssh key
+      command: "cat {{homedir}}/.ssh/id_rsa.pub"
+      register: pubkey_result
+
+    - name: get current hostname
+      command: "hostname"
+      register: hostname_result
+
+    - name:
+      uri:
+        url: https://api.github.com/user/keys
+        method: POST
+        user: "{{github_username}}"
+        password: "{{github_oauth_token}}"
+        force_basic_auth: true
+        body:
+          title: "Key from Ansible for: {{hostname_result.stdout}}"
+          key: "{{pubkey_result.stdout}}"
+        body_format: json
