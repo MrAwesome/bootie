@@ -1,0 +1,14 @@
+---
+# This expects to be run with `ansible-playbook initial_setup.yml -u username`
+- name: Initial setup steps which set passwords etc
+  hosts: localhost
+  vars_files:
+    - user.yml
+    - secrets.yml
+
+  tasks:
+    - name: ensure main user exists
+      user:
+        name: "{{user}}"
+        generate_ssh_key: true
+        shell: /bin/zsh

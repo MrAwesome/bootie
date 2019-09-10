@@ -1,0 +1,22 @@
+---
+- name: set up dotfiles repo
+  git:
+    repo: git@github.com:MrAwesome/dotfiles.git
+    dest: "{{dotfilesdir}}"
+  become: true
+  become_user: "{{user}}"
+
+- name: create dotfiles symlinks
+  command: "stow {{item}}"
+  args:
+    chdir: "{{dotfilesdir}}"
+    creates: "{{homedir}}/.{{item}}"
+  become: true
+  become_user: "{{user}}"
+  with_items:
+    fakedot
+
+# TODO: vars passed through correctly
+# TODO: ensure main user's ssh key is added to github
+# TODO: figure out vault
+# TODO: create simpler things for root

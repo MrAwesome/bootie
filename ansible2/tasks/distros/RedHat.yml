@@ -1,0 +1,20 @@
+---
+
+- name: install EPEL repo
+  package:
+    name: epel-release
+
+- name: Add repository
+  yum_repository:
+    name: ripgrep_copr
+    description: ripgrep copr yum repo
+    # yamllint disable-line rule:line-length
+    baseurl: "https://copr-be.cloud.fedoraproject.org/results/carlwgeorge/ripgrep/epel-7-$basearch/"
+    gpgcheck: true
+    # yamllint disable-line rule:line-length
+    gpgkey: "https://copr-be.cloud.fedoraproject.org/results/carlwgeorge/ripgrep/pubkey.gpg"
+    # TODO: this repo is centos7 specific, should you fix?
+
+- name: install centos/redhat/etc desktop packages
+  package:
+    name: "{{packages['centos_server']}}"

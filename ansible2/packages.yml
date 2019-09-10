@@ -1,0 +1,39 @@
+---
+packages:
+  general:
+    - git
+    - mercurial
+    - rsync
+    - stow
+    - tmux
+    - vim
+    - zsh
+
+  arch_desktops:
+    - ansible-lint
+    - aspell
+    - base-devel
+    - awesome
+    - evince
+    - i3
+    - pulseaudio
+    - pulsemixer
+    - prettier
+    - p7zip
+    - ripgrep
+    - rxvt-unicode
+    - qutebrowser
+    - weechat
+    - wget
+
+  arch_desktops_aur:
+    - command-not-found
+    - dtrx
+    - fonts-meta-base
+    - spotify
+    - vim-youcompleteme-git
+
+  centos_server:
+    - ripgrep
+    - mosh
+    # - et # hopeless

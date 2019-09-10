@@ -1,0 +1,11 @@
+---
+- name: install arch desktop packages
+  package:
+    name: "{{packages['arch_desktops']}}"
+- name: install arch desktop aur packages
+  aur:
+    use: yay
+    skip_installed: true
+    name: "{{packages['arch_desktops_aur']}}"
+  become: true
+  become_user: aur_builder
