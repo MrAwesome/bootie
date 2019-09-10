@@ -13,10 +13,11 @@ source 01_set_vars.sh
 
 cd ..
 
-# TODO: set up the file for this, or pass the password etc on the command line
+# TODO: Set up the file for this, or pass the password etc on the command line.
+#       Passing from command line seems dubious, but probably 
+#       doesn't leave as much of a dangerous paper trail as putting them in a file.
 ansible-playbook "ansible/initial_setup.yml" --extra-vars="user=${SYSTEM_USER}"
-
-ansible-playbook "ansible/local.yml"
+ansible-playbook "ansible/local.yml" --extra-vars="user=${SYSTEM_USER}"
 
 # TODO: put all this in a repo
 # TODO: clone repo to some dir
