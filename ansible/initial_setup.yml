@@ -33,6 +33,7 @@
         user: "{{github_username}}"
         password: "{{github_oauth_token}}"
         force_basic_auth: true
+        status_code: 201
         body:
           title: "Key from Ansible for: {{hostname_result.stdout}}"
           key: "{{pubkey_result.stdout}}"
