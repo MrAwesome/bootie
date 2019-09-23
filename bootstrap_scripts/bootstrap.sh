@@ -7,9 +7,10 @@ cd $(dirname $0)
 source bootstrap_lib.sh
 
 source 01_set_vars.sh
-./03_bootstrap_ansible.sh 
 
 [[ -f ./05_distro_${DISTRO}.sh ]] && ./05_distro_${DISTRO}.sh
+
+./07_bootstrap_ansible.sh 
 
 cd ..
 
