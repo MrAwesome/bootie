@@ -9,7 +9,7 @@
 
 - name: set up dotfiles repo (https)
   git:
-    repo: https://github.com/MrAwesome/bootie.git
+    repo: https://github.com/MrAwesome/dotfiles.git
     dest: "{{dotfilesdir}}"
   become: true
   become_user: "{{user}}"
