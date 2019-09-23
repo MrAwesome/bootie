@@ -1,10 +1,19 @@
 ---
-- name: set up dotfiles repo
+- name: set up dotfiles repo (ssh)
   git:
     repo: git@github.com:MrAwesome/dotfiles.git
     dest: "{{dotfilesdir}}"
   become: true
   become_user: "{{user}}"
+  when: (is_dev_machine == "1" )
+
+- name: set up dotfiles repo (https)
+  git:
+    repo: https://github.com/MrAwesome/bootie.git
+    dest: "{{dotfilesdir}}"
+  become: true
+  become_user: "{{user}}"
+  when: (is_dev_machine == "0" )
 
 - name: create dotfiles symlinks
   command: "stow {{item}}"

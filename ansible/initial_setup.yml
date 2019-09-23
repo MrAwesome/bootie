@@ -20,4 +20,4 @@
 
     - name: add ssh key to github for dev machine
       include_tasks: "tasks/add_ssh_to_github_for_dev_machines.yml"
-      when: ( is_dev_machine == 1 or is_dev_machine == "1" )
+      when: ( is_dev_machine == "1" )
