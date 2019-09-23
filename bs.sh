@@ -10,7 +10,7 @@ if [[ "$(whoami)" != "root" ]]; then
 fi
 
 ### Distro check ##############
-SUPPORTED_DISTROS=("arch" "centos")
+SUPPORTED_DISTROS=("arch" "centos" "debian")
 
 export DISTRO=$(source /etc/os-release && echo $ID)
 if [[ "$DISTRO" == "fedora" || "$DISTRO" == "rhel" ]]; then 
