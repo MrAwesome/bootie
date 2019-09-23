@@ -14,8 +14,11 @@ SUPPORTED_DISTROS=("arch" "centos" "debian")
 
 export DISTRO=$(source /etc/os-release && echo $ID)
 if [[ "$DISTRO" == "fedora" || "$DISTRO" == "rhel" ]]; then 
-    # They are identical for our purposes.
     DISTRO="centos"
+fi
+
+if [[ "$DISTRO" == "ubuntu" ]]; then 
+    DISTRO="debian"
 fi
 
 if ! [[ " ${SUPPORTED_DISTROS[*]} " == *"$DISTRO"* || "$DISTRO" == "" ]]; then
