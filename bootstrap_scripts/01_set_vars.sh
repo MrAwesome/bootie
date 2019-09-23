@@ -10,6 +10,8 @@ echo -n "System username: "; read -r SYSTEM_USER
 echo -n "System password (silent): "; read -s -r SYSTEM_PASSWORD
 echo
 echo -n "Is this a dev machine? [Y/n]"; read -s -n 1 -r REPLY
+echo
+
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     IS_DEV_MACHINE=1
     
