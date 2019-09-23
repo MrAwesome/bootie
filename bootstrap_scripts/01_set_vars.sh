@@ -9,7 +9,7 @@ IFS=$' \t\n\r'
 echo -n "System username: "; read -r SYSTEM_USER
 echo -n "System password (silent): "; read -s -r SYSTEM_PASSWORD
 echo
-echo -n "Is this a dev machine? [n/Y]"; read -s -n 1 -r REPLY
+echo -n "Is this a dev machine? [y/N]"; read -s -n 1 -r REPLY
 echo
 
 if [[ $REPLY =~ ^[Nn]$ ]]; then
