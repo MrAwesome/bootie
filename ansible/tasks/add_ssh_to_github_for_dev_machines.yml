@@ -1,0 +1,46 @@
+---
+- name: get user ssh key
+  # yamllint disable-line rule:line-length
+  shell: "cat {{homedir}}/.ssh/id_rsa.pub | sed 's/^\\(ssh-rsa [^ ]*\\) .*$/\\1/'"
+  register: pubkey_result
+
+- name: get current hostname
+  command: "hostname --fqdn"
+  register: hostname_result
+
+
+# TODO: have bs.sh gen the config for itself if it doesn't exist,
+# and prompt for values that aren't in it
+# TODO: Only do R/W for development machines
+- name: check for existing key in GitHub
+  uri:
+    url: https://api.github.com/user/keys
+    method: GET
+    user: "{{github_username}}"
+    password: "{{github_oauth_token}}"
+    force_basic_auth: true
+  register: existing_keys
+
+- name: fjlskajfd
+  debug:
+    msg:
+      - "Key from system: "
+      - "{{pubkey_result.stdout}}"
+      - "Keys from github: "
+      # yamllint disable-line rule:line-length
+      - "{{existing_keys.json | map(attribute='key') | list}}"
+
+- name:
+  uri:
+    url: https://api.github.com/user/keys
+    method: POST
+    user: "{{github_username}}"
+    password: "{{github_oauth_token}}"
+    force_basic_auth: true
+    status_code: 201
+    body:
+      title: "Key from Ansible for: {{hostname_result.stdout}}"
+      key: "{{pubkey_result.stdout}}"
+    body_format: json
+  # yamllint disable-line rule:line-length
+  when: ( existing_keys.json | selectattr('key', 'equalto', pubkey_result.stdout) | map(attribute='key') | list | length == 0 )

@@ -32,6 +32,10 @@ elif [[ "$DISTRO" == "centos" ]]; then
     install_cmd() {
         yum install -y $*
     }
+elif [[ "$DISTRO" == "debian" ]]; then 
+    install_cmd() {
+        apt-get install -y $*
+    }
 fi
 export -f install_cmd
 
