@@ -18,7 +18,7 @@ cd ..
 #       Passing from command line seems dubious, but probably 
 #       doesn't leave as much of a dangerous paper trail as putting them in a file.
 ansible-playbook "ansible/initial_setup.yml" --extra-vars="user=${SYSTEM_USER} password=${SYSTEM_PASSWORD} is_dev_machine=${IS_DEV_MACHINE} github_username=${GITHUB_USERNAME} github_oauth_token=${GITHUB_OAUTH_TOKEN}"
-ansible-playbook "ansible/local.yml" --extra-vars="user=${SYSTEM_USER}"
+ansible-playbook "ansible/local.yml" --extra-vars="user=${SYSTEM_USER} is_dev_machine=${IS_DEV_MACHINE}"
 
 # TODO: put all this in a repo
 # TODO: clone repo to some dir
