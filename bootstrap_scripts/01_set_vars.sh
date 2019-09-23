@@ -9,14 +9,13 @@ IFS=$' \t\n\r'
 echo -n "System username: "; read -r SYSTEM_USER
 echo -n "System password (silent): "; read -s -r SYSTEM_PASSWORD
 echo
-echo -n "Is this a dev machine? [Y/n]"; read -s -n 1 -r REPLY
+echo -n "Is this a dev machine? [n/Y]"; read -s -n 1 -r REPLY
 echo
 
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    IS_DEV_MACHINE=1
-    
-else 
+if [[ $REPLY =~ ^[Nn]$ ]]; then
     IS_DEV_MACHINE=0
+else 
+    IS_DEV_MACHINE=1
 fi
 
 if [[ $IS_DEV_MACHINE == 1 ]]; then

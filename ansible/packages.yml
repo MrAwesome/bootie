@@ -35,5 +35,5 @@ packages:
 
   centos_server:
     - ripgrep
-    - mosh
+    # - mosh # hopeless on centos 8
     # - et # hopeless
