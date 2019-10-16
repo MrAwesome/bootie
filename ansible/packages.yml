@@ -23,6 +23,7 @@ packages:
     - ripgrep
     - rxvt-unicode
     - qutebrowser
+    - wavemon
     - weechat
     - wget
 
