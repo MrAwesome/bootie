@@ -20,6 +20,7 @@ packages:
     - pulsemixer
     - prettier
     - p7zip
+    - python-black
     - ripgrep
     - rxvt-unicode
     - qutebrowser
