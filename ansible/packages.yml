@@ -31,6 +31,7 @@ packages:
     - command-not-found
     - dtrx
     - fonts-meta-base
+    - pyre-check-bin
     - spotify
     - vim-youcompleteme-git
 
