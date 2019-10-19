@@ -21,6 +21,7 @@ packages:
     - prettier
     - p7zip
     - python-black
+    - python-isort
     - ripgrep
     - rxvt-unicode
     - qutebrowser
