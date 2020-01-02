@@ -28,6 +28,7 @@ packages:
     - wavemon
     - weechat
     - wget
+    - xdotool
 
   arch_desktops_aur:
     - command-not-found
