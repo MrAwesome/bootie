@@ -46,29 +46,5 @@ if ! command -v git &> /dev/null; then
     install_cmd git
 fi
 
-TMPDIR=$(mktemp -d)
-
-echo "TEMPDIR LOCATION:"
-echo "$TMPDIR"
-echo
-
-cd $TMPDIR
-
-git clone "$REPO"
-
-if [[ "$?" != "0" ]]; then
-    echo "** Failed to download bootstrap scripts. **"
-    exit 1
-fi
-
-
-echo "TEMPDIR LOCATION:"
-echo "$TMPDIR"
-echo
-
-cd bootie/
-
-echo "** Running boostrap script now! **"
-
 chmod +x bootstrap_scripts/*.sh
 ./bootstrap_scripts/bootstrap.sh

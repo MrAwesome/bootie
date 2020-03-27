@@ -24,6 +24,7 @@
   become_user: "{{user}}"
   with_items:
     fakedot
+    vim
 
 # TODO: vars passed through correctly
 # TODO: ensure main user's ssh key is added to github

@@ -10,25 +10,34 @@ packages:
     - zsh
 
   arch_desktops:
+    - acpi
     - ansible-lint
     - aspell
-    - base-devel
     - awesome
+    - base-devel
+    - binutils
     - evince
-    - i3
+    - fakeroot
+    - feh
+    - fzf
+    - maim
+    - openssh
+    - p7zip
+    - prettier
     - pulseaudio
     - pulsemixer
-    - prettier
-    - p7zip
     - python-black
     - python-isort
+    - qutebrowser
     - ripgrep
     - rxvt-unicode
-    - qutebrowser
+    - sudo
     - wavemon
     - weechat
     - wget
     - xdotool
+    - xorg
+    - xorg-xinit
 
   arch_desktops_aur:
     - command-not-found
