@@ -3,10 +3,12 @@ packages:
   general:
     - git
     - mercurial
+    - npm
     - rsync
-    - stow
+    - sudo
     - tmux
     - vim
+    - yarn
     - zsh
 
   arch_desktops:
@@ -23,12 +25,9 @@ packages:
     - maim
     - openssh
     - p7zip
+    - pipewire
     - prettier
-    - pulseaudio
     - pulsemixer
-    - python-black
-    - python-isort
-    - qutebrowser
     - ripgrep
     - rxvt-unicode
     - sudo
@@ -43,9 +42,7 @@ packages:
     - command-not-found
     - dtrx
     - fonts-meta-base
-    - pyre-check-bin
     - spotify
-    - vim-youcompleteme-git
 
   centos_server:
     - ripgrep
