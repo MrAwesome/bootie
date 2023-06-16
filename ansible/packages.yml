@@ -28,14 +28,16 @@ packages:
     - pipewire
     - prettier
     - pulsemixer
+    - reflector
     - ripgrep
     - rxvt-unicode
     - sudo
+    - terminus-font
     - wavemon
     - weechat
     - wget
     - xdotool
-    - xorg
+    - xlockmore
     - xorg-xinit
 
   arch_desktops_aur:
