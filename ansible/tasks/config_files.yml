@@ -16,14 +16,13 @@
   when: (is_dev_machine == "0" )
 
 - name: create dotfiles symlinks
-  command: "stow {{item}}"
+  command: "./run.sh"
   args:
     chdir: "{{dotfilesdir}}"
     creates: "{{homedir}}/.{{item}}"
   become: true
   become_user: "{{user}}"
   with_items:
-    fakedot
     vim
 
 # TODO: vars passed through correctly
