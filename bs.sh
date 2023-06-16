@@ -28,14 +28,20 @@ fi
 ################################
 
 if [[ "$DISTRO" == "arch" ]]; then
+    pacman -Sy --noconfirm
+
     install_cmd() {
         pacman -S $*
     }
 elif [[ "$DISTRO" == "centos" ]]; then 
+    yum update -y
+
     install_cmd() {
         yum install -y $*
     }
 elif [[ "$DISTRO" == "debian" ]]; then 
+    apt update -y
+
     install_cmd() {
         apt-get install -y $*
     }
@@ -46,5 +52,11 @@ if ! command -v git &> /dev/null; then
     install_cmd git
 fi
 
-chmod +x bootstrap_scripts/*.sh
-./bootstrap_scripts/bootstrap.sh
+if [ ! -d bootstrap_scripts ]; then
+    git clone https://github.com/MrAwesome/bootie.git
+    cd bootie
+    ./bs.sh
+else
+    chmod +x bootstrap_scripts/*.sh
+    ./bootstrap_scripts/bootstrap.sh
+fi
