@@ -53,8 +53,9 @@ if ! command -v git &> /dev/null; then
 fi
 
 if [ ! -d bootstrap_scripts ]; then
-    git clone https://github.com/MrAwesome/bootie.git
+    [ ! -d bootie ] || git clone https://github.com/MrAwesome/bootie.git
     cd bootie
+    git pull
     ./bs.sh
 else
     chmod +x bootstrap_scripts/*.sh
