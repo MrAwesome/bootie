@@ -24,14 +24,20 @@ cd $ANSIBLE_AUR_BUILD_DIR
 #fi
 
 install_ansible_aur_git() {
+    # Run this as a non-root user:
     logstat "Installing ansible-aur-git."
-    curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/ansible-aur-git.tar.gz
-    tar xf ansible-aur-git.tar.gz 
+    chown "$SYSTEM_USER" "$ANSIBLE_AUR_BUILD_DIR"
+    sudo -u "$SYSTEM_USER" curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/ansible-aur-git.tar.gz
+    sudo -u "$SYSTEM_USER" tar xf ansible-aur-git.tar.gz 
     cd ansible-aur-git 
-    makepkg
-    pacman -U ansible-aur-git.*tar.xz
+    # run makepkg as SYSTEM_USER:
+    sudo -u "$SYSTEM_USER" makepkg
+    echo '==='
+    pwd
+    ls
+    echo '==='
+    pacman -U ansible-aur-git*tar.zst
     logstat "Successfully installed ansible-aur-git."
-    cd $ANSIBLE_AUR_BUILD_DIR
 }
 
 if ! [[ -f "/usr/share/ansible/plugins/modules/aur.py" ]]; then

@@ -24,6 +24,7 @@ packages:
     - fzf
     - maim
     - openssh
+    - parcellite
     - p7zip
     - pipewire
     - prettier
@@ -44,7 +45,7 @@ packages:
     - command-not-found
     - dtrx
     - fonts-meta-base
-    - spotify
+    # - spotify
 
   centos_server:
     - ripgrep

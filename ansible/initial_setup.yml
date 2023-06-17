@@ -10,6 +10,7 @@
     - user.yml
     - secrets.yml
 
+  # don't change password if the user_exists_already field is true
   tasks:
     - name: ensure main user exists
       user:
@@ -17,7 +18,8 @@
         generate_ssh_key: true
         shell: /bin/zsh
         password: "{{ password | password_hash('sha512')}}"
+      when: ( user_already_exists == "0" )
 
-    - name: add ssh key to github for dev machine
-      include_tasks: "tasks/add_ssh_to_github_for_dev_machines.yml"
-      when: ( is_dev_machine == "1" )
+#    - name: add ssh key to github for dev machine
+#      include_tasks: "tasks/add_ssh_to_github_for_dev_machines.yml"
+#      when: ( is_dev_machine == "1" )
