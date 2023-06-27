@@ -1,9 +1,11 @@
 ---
 packages:
   general:
+    - curl
     - git
     - mercurial
     - npm
+    - ripgrep
     - rsync
     - sudo
     - tmux
@@ -30,7 +32,6 @@ packages:
     - prettier
     - pulsemixer
     - reflector
-    - ripgrep
     - rxvt-unicode
     - sudo
     - terminus-font
@@ -47,7 +48,7 @@ packages:
     - fonts-meta-base
     # - spotify
 
-  centos_server:
-    - ripgrep
+      #centos_server:
+      #- ripgrep
     # - mosh # hopeless on centos 8
     # - et # hopeless

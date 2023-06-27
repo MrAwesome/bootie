@@ -19,11 +19,13 @@
   command: "./run.sh"
   args:
     chdir: "{{dotfilesdir}}"
-    creates: "{{homedir}}/.{{item}}"
+    #creates: "{{homedir}}/.{{item}}"
   become: true
   become_user: "{{user}}"
-  with_items:
-    vim
+    #with_items:
+    #vim
+    #vimrc
+
 
 # TODO: vars passed through correctly
 # TODO: ensure main user's ssh key is added to github
