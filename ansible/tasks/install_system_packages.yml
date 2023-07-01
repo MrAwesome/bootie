@@ -1,0 +1,15 @@
+---
+- name: install centos/redhat/etc system packages
+  package:
+    name: "{{packages['rhel_system']}}"
+    when: ansible_os_family == "RedHat"
+
+- name: install debian/ubuntu system packages
+  package:
+    name: "{{packages['debian_system']}}"
+    when: ansible_os_family == "Debian"
+
+- name: install arch system packages
+  package:
+    name: "{{packages['arch_system']}}"
+    when: ansible_os_family == "Archlinux"

@@ -1,3 +1,0 @@
----
-homedir: "/home/{{user}}/"
-dotfilesdir: "{{homedir}}/dotfiles/"

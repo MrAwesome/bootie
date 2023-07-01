@@ -1,0 +1,10 @@
+---
+- name: restart sshd2
+  systemd:
+    name: sshd2
+    state: restarted
+  become: yes
+
+- name: reload systemd
+  command: systemctl daemon-reload
+  become: yes

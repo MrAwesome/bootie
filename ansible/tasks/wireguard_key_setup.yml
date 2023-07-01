@@ -1,0 +1,38 @@
+---
+- name: "Check if {{wireguard_dir}}/private.key exists"
+  stat:
+    path: "{{wireguard_dir}}/private.key"
+  register: private_key_exists 
+
+- name: Generate private key if it doesn't exist
+  shell: "wg genkey | tee {{wireguard_dir}}/private.key"
+  register: private_key_new
+  when: not private_key_exists.stat.exists
+
+- name: "Check if {{wireguard_dir}}/public.key exists"
+  stat:
+    path: "{{wireguard_dir}}/public.key"
+  register: public_key_exists 
+  when: not private_key_new.changed
+
+- name: Generate public key if it doesn't exist
+  shell: "wg pubkey < {{wireguard_dir}}/private.key | tee {{wireguard_dir}}/public.key"
+  register: public_key_new
+  when: private_key_new.changed or not public_key_exists.stat.exists
+
+- name: Fetch the content of the private key
+  command: "cat {{wireguard_dir}}/private.key"
+  register: private_key_content
+  changed_when: false
+
+- name: Fetch the content of the public key
+  command: "cat {{wireguard_dir}}/public.key"
+  register: public_key_content
+  changed_when: false
+
+- name: Set variables for wireguard keys
+  set_fact:
+    wireguard_private_key: "{{ private_key_content.stdout }}"
+    wireguard_private_key_changed: "{{ private_key_new.changed }}"
+    wireguard_public_key: "{{ public_key_content.stdout }}"
+    wireguard_public_key_changed: "{{ public_key_new.changed }}"

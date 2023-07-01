@@ -1,0 +1,51 @@
+---
+- name: System Basics
+  hosts: all
+  vars_files:
+    - constants.yml
+    - packages.yml
+    - secrets.yml
+  tasks:
+    - name: "Print OS Family"
+      debug:
+        msg: "{{ansible_os_family}}"
+
+    # NOTE: this includes repo setup, so should happen 
+    #       before general package installation
+    - name: include distro-specific repo setup
+      include_tasks: "tasks/package_manager_distro_setup.yml"
+
+    - name: install general packages
+      package:
+        name: "{{packages['general']}}"
+
+    - name: update system packages
+      include_tasks:
+        file: "tasks/update_system_packages.yml"
+
+    - name: install system packages
+      include_tasks:
+        file: "tasks/install_system_packages.yml"
+
+    - name: set up config files
+      include_tasks:
+        file: "tasks/dotfiles_setup.yml"
+
+
+    # TODO: somehow indicate that a reboot should happen (if not master and only if linux was upgraded?)
+
+- name: Desktop Packages
+  vars_files:
+    - constants.yml
+    - packages.yml
+  hosts: desktops
+  tasks:
+    - name: install user packages
+      include_tasks:
+        file: "tasks/install_user_packages.yml"
+      when: is_desktop == "1"
+
+    - name: update user packages
+      include_tasks:
+        file: "tasks/update_user_packages.yml"
+      when: is_desktop == "1"

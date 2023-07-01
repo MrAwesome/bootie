@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+Port 18334
+PermitRootLogin no
+MaxAuthTries 3
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM yes
+PrintLastLog yes
+AllowUsers {{ service_user_name }}
+ListenAddress {{ vpn_ipv4 }}
+ListenAddress {{ vpn_ipv6 }}

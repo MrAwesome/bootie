@@ -13,6 +13,10 @@ packages:
     - yarn
     - zsh
 
+  arch_system:
+  rhel_system:
+  debian_system:
+
   arch_desktops:
     - acpi
     - ansible-lint

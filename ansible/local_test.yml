@@ -1,0 +1,25 @@
+---
+- name: Everything
+  hosts: localhost
+  vars_files:
+    - constants.yml
+    - packages.yml
+    - secrets.yml
+  vars:
+    wireguard_dir: /tmp/wg
+  tasks:
+    - name: lawl
+      debug: 
+        var: vpn_ipv6
+
+#    - name: service user
+#      include_tasks: tasks/service_user/service_user.yml
+#
+#    - name: sshd
+#      include_tasks: tasks/service_user/service_sshd.yml
+#
+#    - name: Create ssh key for service user
+#      ansible.posix.authorized_key:
+#        user: glenn
+#        state: present
+#        key: '{{ secrets.master_ssh_pubkey }}'

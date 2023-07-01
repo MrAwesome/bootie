@@ -1,0 +1,29 @@
+---
+- name: copy sshd config template
+  template:
+    src: templates/sshd_config2.j2
+    dest: /etc/ssh/sshd_config2
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - reload systemd
+    - restart sshd2
+
+- name: Ensure sshd2 service is created
+  copy:
+    src: files/sshd2.service
+    dest: /etc/systemd/system/sshd2.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - reload systemd
+    - restart sshd2
+
+- name: Enable and start sshd2 service
+  systemd:
+    name: sshd2
+    enabled: yes
+    state: started
+  become: yes

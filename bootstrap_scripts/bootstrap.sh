@@ -17,14 +17,15 @@ pushd ..
 # TODO: Set up the file for this, or pass the password etc on the command line.
 #       Passing from command line seems dubious, but probably 
 #       doesn't leave as much of a dangerous paper trail as putting them in a file.
-ansible-playbook "ansible/initial_setup.yml" --extra-vars="user=${SYSTEM_USER} password=${SYSTEM_PASSWORD:-} is_dev_machine=${IS_DEV_MACHINE} user_already_exists=${USER_ALREADY_EXISTS}"
+ansible-playbook "ansible/initial_setup.yml" -e "@local_inventory.yml"
+
 #github_username=${GITHUB_USERNAME} github_oauth_token=${GITHUB_OAUTH_TOKEN}"
 
 popd
 [[ -f ./09_distro_${DISTRO}.sh ]] && ./09_distro_${DISTRO}.sh
 pushd ..
 
-ansible-playbook "ansible/local.yml" --extra-vars="user=${SYSTEM_USER} is_dev_machine=${IS_DEV_MACHINE}"
+#ansible-playbook "ansible/local.yml" --extra-vars="user=${SYSTEM_USER} is_dev_machine=${IS_DEV_MACHINE}"
 
 
 

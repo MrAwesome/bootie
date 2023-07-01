@@ -1,0 +1,5 @@
+---
+- name: include distro-specific repo setup
+  include_tasks: "{{ item }}"
+  with_first_found:
+    - "tasks/distros/reposetup-{{ ansible_os_family }}.yml"

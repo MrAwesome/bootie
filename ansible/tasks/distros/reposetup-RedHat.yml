@@ -1,5 +1,4 @@
 ---
-
 - name: install EPEL repo
   package:
     name: epel-release
@@ -14,7 +13,3 @@
     # yamllint disable-line rule:line-length
     gpgkey: "https://copr-be.cloud.fedoraproject.org/results/carlwgeorge/ripgrep/pubkey.gpg"
     # TODO: this repo is centos7 specific, should you fix?
-
-- name: install centos/redhat/etc desktop packages
-  package:
-    name: "{{packages['centos_server']}}"

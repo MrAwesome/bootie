@@ -1,0 +1,21 @@
+---
+- name: Create the ansible service user
+  become: yes
+  ansible.builtin.user:
+    name: "{{ service_user_name }}"
+    create_home: yes
+    group: wheel
+
+- name: Allow the ansible service user to run `sudo` without a password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/12-install-ansible_service_user
+    line: '{{ service_user_name }} ALL=(ALL) NOPASSWD: ALL'
+    create: yes
+    validate: 'visudo -cf %s'
+
+- name: Create ssh key for service user
+  ansible.posix.authorized_key:
+    user: "{{ service_user_name }}"
+    state: present
+    key: '{{ secrets.master_ssh_pubkey }}'

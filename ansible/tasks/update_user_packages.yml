@@ -1,0 +1,9 @@
+---
+- name: Update and upgrade pacman and AUR packages
+  aur:
+    use: yay
+    update_cache: yes
+    upgrade: yes
+  become: yes
+  become_user: aur_builder
+  when: ansible_os_family == "Archlinux"

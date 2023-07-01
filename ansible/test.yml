@@ -1,0 +1,21 @@
+---
+- name: Everything
+  hosts: all
+  vars_files:
+    - constants.yml
+    - packages.yml
+  tasks:
+    - name: "hostname"
+      shell: cat /etc/hostname
+      register: pubkey_result
+
+
+- name: Desktop Packages
+  vars_files:
+    - constants.yml
+    - packages.yml
+  hosts: all
+  tasks:
+    - name: "VVVVVVVVVVVVVVVVV"
+      debug:
+        msg: "VVVVVVVVVVVVVVVV"

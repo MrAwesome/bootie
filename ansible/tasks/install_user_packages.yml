@@ -1,0 +1,5 @@
+---
+- name: install Arch Linux desktop-specific packages
+  include_tasks:
+    file: "tasks/distros/arch_desktops.yml"
+    when: ansible_os_family == "Archlinux"

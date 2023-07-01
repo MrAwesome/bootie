@@ -1,5 +1,6 @@
-[] Ask for hostname, username, and password for fetching the file ".bootie_secrets" over ssh (for setting up wireguard, github, etc)
+[] Finish setting up remote runs
 [] Work on a way to send secrets back once authed
 [] hostname that just redirects to https://raw.githubusercontent.com/MrAwesome/bootie/master/bs.sh
 [] remote hosts should have a different PS1 color
 [] add user to sudo/admin/wheel
+[] add support for openbsd (to shell scripts and to ansible)

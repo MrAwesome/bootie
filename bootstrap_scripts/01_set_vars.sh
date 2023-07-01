@@ -4,28 +4,27 @@
 #       source it, and then only set the ones here which aren't
 #       set there. Also, allow them to be passed as command line args to bs.sh
 
-OLD_IFS="$IFS"
-IFS=$' \t\n\r' 
-# set default value for SYSTEM_USER:
+#OLD_IFS="$IFS"
+#IFS=$' \t\n\r' 
 
-SYSTEM_USER=${SYSTEM_USER:-"glenn"}
+#SYSTEM_USER=${SYSTEM_USER:-"glenn"}
 
-if ! id -u "$SYSTEM_USER" &> /dev/null; then
-    echo -n "System password (silent): "; read -s -r SYSTEM_PASSWORD
-    USER_ALREADY_EXISTS=0
-else
-    USER_ALREADY_EXISTS=1
-fi
+#if ! id -u "$SYSTEM_USER" &> /dev/null; then
+#    echo -n "System password (silent): "; read -s -r SYSTEM_PASSWORD
+#    USER_ALREADY_EXISTS=0
+#else
+#    USER_ALREADY_EXISTS=1
+#fi
 
-echo
-echo -n "Is this a dev machine? [y/N]"; read -s -n 1 -r REPLY
-echo
-
-if [[ $REPLY =~ ^[Nn]$ ]]; then
-    IS_DEV_MACHINE=0
-else 
-    IS_DEV_MACHINE=1
-fi
+#echo
+#echo -n "Is this a dev machine? [y/N]"; read -s -n 1 -r REPLY
+#echo
+#
+#if [[ $REPLY =~ ^[Nn]$ ]]; then
+#    IS_DEV_MACHINE=0
+#else 
+#    IS_DEV_MACHINE=1
+#fi
 
 #if [[ $IS_DEV_MACHINE == 1 ]]; then
 #    echo $IS_DEV_MACHINE
@@ -49,9 +48,9 @@ fi
 #    GITHUB_USERNAME=""
 #fi
 
-export SYSTEM_USER
-export SYSTEM_PASSWORD
+#export SYSTEM_USER
+#export SYSTEM_PASSWORD
 #export GITHUB_USERNAME
 #export GITHUB_OAUTH_TOKEN
-export IS_DEV_MACHINE
-export USER_ALREADY_EXISTS
+#export IS_DEV_MACHINE
+#export USER_ALREADY_EXISTS
