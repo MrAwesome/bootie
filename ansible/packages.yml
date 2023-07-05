@@ -10,12 +10,14 @@ packages:
     - sudo
     - tmux
     - vim
-    - yarn
     - zsh
 
   arch_system:
+    - yarn
   rhel_system:
+    - yarnpkg
   debian_system:
+    - yarnpkg
 
   arch_desktops:
     - acpi
