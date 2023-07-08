@@ -9,15 +9,6 @@ if [[ "$(whoami)" != "root" ]]; then
     exit 1
 fi
 
-if [ ! -f local_inventory.yml ]; then
-    cp example_local_inventory.yml local_inventory.yml
-fi
-
-if [ "$(grep SETME local_inventory.yml || true)" != "" ]; then
-    echo "Please edit local_inventory.yml before running this script." >&2
-    exit 1
-fi
-
 ### Distro check ##############
 SUPPORTED_DISTROS=("arch" "centos" "debian")
 
@@ -69,6 +60,15 @@ if [ ! -d bootstrap_scripts ]; then
     git pull
     ./bs.sh
 else
+    if [ ! -f local_inventory.yml ]; then
+        cp example_local_inventory.yml local_inventory.yml
+    fi
+
+    if [ "$(grep SETME local_inventory.yml || true)" != "" ]; then
+        echo "Please edit local_inventory.yml before running this script." >&2
+        exit 1
+    fi
+
     chmod +x bootstrap_scripts/*.sh
     ./bootstrap_scripts/bootstrap.sh
 fi
