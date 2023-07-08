@@ -1,4 +1,9 @@
 ---
+- name: Ensure wheel group exists
+  group:
+    name: wheel
+    state: present
+
 - name: Create the ansible service user
   become: yes
   ansible.builtin.user:
