@@ -3,11 +3,11 @@ Description=OpenSSH server daemon for ansible service user
 Documentation=man:sshd(8) man:sshd_config(5)
 
 [Service]
-ExecStart=/usr/sbin/sshd -D -f /etc/ssh/sshd_config2
+ExecStart=/usr/sbin/sshd -D -f /etc/ssh/sshd_config_bootie
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=always
 
 [Install]
 WantedBy=multi-user.target
-Alias=sshd2.service
+Alias=sshd_bootie.service

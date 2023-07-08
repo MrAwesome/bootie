@@ -1,29 +1,29 @@
 ---
 - name: copy sshd config template
   template:
-    src: templates/sshd_config2.j2
-    dest: /etc/ssh/sshd_config2
+    src: templates/sshd_config_bootie.j2
+    dest: /etc/ssh/sshd_config_bootie
     owner: root
     group: root
     mode: 0644
   notify:
     - reload systemd
-    - restart sshd2
+    - restart sshd_bootie
 
-- name: Ensure sshd2 service is created
+- name: Ensure sshd_bootie service is created
   copy:
-    src: files/sshd2.service
-    dest: /etc/systemd/system/sshd2.service
+    src: files/sshd_bootie.service
+    dest: /etc/systemd/system/sshd_bootie.service
     owner: root
     group: root
     mode: 0644
   notify:
     - reload systemd
-    - restart sshd2
+    - restart sshd_bootie
 
-- name: Enable and start sshd2 service
+- name: Enable and start sshd_bootie service
   systemd:
-    name: sshd2
+    name: sshd_bootie
     enabled: yes
     state: started
   become: yes

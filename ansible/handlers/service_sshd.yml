@@ -1,7 +1,7 @@
 ---
-- name: restart sshd2
+- name: restart sshd_bootie
   systemd:
-    name: sshd2
+    name: sshd_bootie
     state: restarted
   become: yes
 
