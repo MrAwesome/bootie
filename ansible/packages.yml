@@ -19,6 +19,9 @@ packages:
   debian_system:
     - yarnpkg
 
+  wireguard_userspace:
+    - wireguard-go
+
   arch_desktops:
     - acpi
     - ansible-lint

@@ -1,0 +1,11 @@
+---
+- name: install wireguard-tools
+  ansible.builtin.package:
+    name: "wireguard-tools"
+    state: present
+
+- name:
+  ansible.builtin.package:
+    name: "wireguard-go"
+    state: present
+    when: ( needs_userspace_wireguard == true )

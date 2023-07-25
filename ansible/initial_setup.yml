@@ -22,10 +22,8 @@
         #package: "openssh"
       # TODO: gate to only OS which need this, if any
         
-    - name: install wireguard-tools
-      ansible.builtin.package:
-        name: "wireguard-tools"
-        state: present
+    - name: install wireguard prerequisites
+      include_tasks: tasks/wireguard_prerequisites.yml
 
     - name: set up wireguard
       include_tasks: tasks/wireguard_key_setup.yml
