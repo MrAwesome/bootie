@@ -64,6 +64,12 @@ else
         cp example_local_inventory.yml local_inventory.yml
     fi
 
+    if [ -n "${SUDO_USER:-}" ]; then
+        chown "$SUDO_USER" local_inventory.yml
+    fi
+
+    chmod 600 local_inventory.yml
+
     if [ "$(grep SETME local_inventory.yml || true)" != "" ]; then
         echo "Please edit local_inventory.yml before running this script." >&2
         exit 1
