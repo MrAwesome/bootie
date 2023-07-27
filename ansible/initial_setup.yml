@@ -25,8 +25,14 @@
     - name: install wireguard prerequisites
       include_tasks: tasks/wireguard_prerequisites.yml
 
-    - name: set up wireguard
+    - name: wireguard keys
       include_tasks: tasks/wireguard_key_setup.yml
+
+    - name: wireguard prerequisites
+      include_tasks: tasks/wireguard_prerequisites.yml
+
+    - name: wireguard config
+      include_tasks: tasks/wireguard_config_setup.yml
 
     - name: service user
       include_tasks: tasks/service_user/service_user.yml
