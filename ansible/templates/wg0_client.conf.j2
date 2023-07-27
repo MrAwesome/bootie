@@ -1,0 +1,12 @@
+[Interface]
+Address = {{ vpn_ipv4 }}/32
+Address = {{ vpn_ipv6 }}/128
+SaveConfig = true
+ListenPort = 16964
+PrivateKey = {{ wireguard_private_key }}
+
+[Peer]
+PublicKey = {{ vpn_master_public_key }}
+AllowedIPs = {{ vpn_allowed_prefixes }}
+Endpoint = {{ vpn_endpoint }}:{{ vpn_port }}
+PersistentKeepalive = 25

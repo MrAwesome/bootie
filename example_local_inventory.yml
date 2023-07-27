@@ -1,9 +1,14 @@
 ---
 vpn_ipv4_prefix: "10.8.0."
 vpn_ipv6_prefix: "fde7:d93d:4c9a::"
+vpn_master_pubkey: "MUGDqMWzP85HO1V5U06Uc+24U+XvCJ2zaTFuWO3zynI="
+vpn_allowed_prefixes: "10.8.0.0/24,fde7:d93d:4c9a::/64"
+vpn_port: "16964"
+is_vpn_master: false
 is_dev_machine: false
 user_already_exists: false
 needs_userspace_wireguard: false
 user: glenn
+vpn_endpoint: SETME
 vpn_suffix: SETME
 password: SETME

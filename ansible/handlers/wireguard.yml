@@ -1,0 +1,5 @@
+---
+- name: Reload wireguard
+  systemd:
+    name: wg-quick@wg0
+    state: reloaded
