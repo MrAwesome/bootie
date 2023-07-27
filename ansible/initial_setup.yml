@@ -42,6 +42,7 @@
 
   handlers:
     - import_tasks: "handlers/service_sshd.yml"
+    - import_tasks: "handlers/wireguard.yml"
 
 #    - name: add ssh key to github for dev machine
 #      include_tasks: "tasks/add_ssh_to_github_for_dev_machines.yml"
